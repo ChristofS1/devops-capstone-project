@@ -1,10 +1,11 @@
 import unittest
-from flask import Flask, jsonify
+from flask import Flask
 from werkzeug.exceptions import NotFound, InternalServerError
 # Importiere die Fehlerhandler aus deiner Anwendung
 # Angenommen, die Funktionen heißen not_found_error, internal_error, handle_http_exception
 # und sind in service.common.error_handlers definiert
 from service.common.error_handlers import not_found, internal_server_error
+
 
 class TestErrorHandlers(unittest.TestCase):
     def setUp(self):
@@ -38,6 +39,7 @@ class TestErrorHandlers(unittest.TestCase):
         data = resp.get_json()
         self.assertIn("error", data)
         self.assertEqual(data["error"], "Internal Server Error")
- 
+
+
 if __name__ == '__main__':
     unittest.main()
